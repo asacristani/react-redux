@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 function InvestorTable() {
   const investors = useSelector((state) => state.investors.investors);
@@ -20,7 +21,14 @@ function InvestorTable() {
           <tbody>
             {investors.map((investor) => (
               <tr key={investor.firmID}>
-                <td>{investor.firmID}</td>
+                <td>
+                  <Link
+                    key={investor.firmID}
+                    to={`/investors/${investor.firmID}`}
+                  >
+                    {investor.firmID}
+                  </Link>
+                </td>
                 <td>{investor.firmName}</td>
                 <td>{investor.region}</td>
                 <td>{investor.address}</td>

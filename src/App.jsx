@@ -1,9 +1,12 @@
-import { InvestorTable } from './components/investorTable.jsx';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+import { InvestorTable } from './components/investorTable.jsx';
+import { InvestorDetail } from './components/investorDetail.jsx';
 
 import { getInvestorsFromAPI, getTokenFromAPI } from './sdks/preqin.js';
-import { addToken } from './redux/tokenSlice.js';
+
 import { addInvestors } from './redux/investorsSlice.js';
 
 function App() {
@@ -30,9 +33,20 @@ function App() {
     }
   }, [token]);
 
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <InvestorTable />,
+    },
+    {
+      path: '/investors/:id',
+      element: <InvestorDetail />,
+    },
+  ]);
+
   return (
     <div>
-      <InvestorTable />
+      <RouterProvider router={router} />
     </div>
   );
 }
