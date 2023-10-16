@@ -28,7 +28,7 @@ Make sure you have the following programs installed on your machine:
 1. Clone this repository to your local machine:
 
 ```bash
-git clone https://github.com/your-username/react-redux-investor-management.git
+git clone git@github.com:asacristani/react-redux.git
 ```
 
 2. Navigate to the project directory:
