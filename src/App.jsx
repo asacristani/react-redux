@@ -4,10 +4,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import { InvestorTable } from './components/investorTable.jsx';
 import { InvestorDetail } from './components/investorDetail.jsx';
+import { InvestorAssetDetail } from './components/investorAssetDetail.jsx';
 
 import { getInvestorsFromAPI, getTokenFromAPI } from './sdks/preqin.js';
 
 import { addInvestors } from './redux/investorsSlice.js';
+import {addToken} from "./redux/tokenSlice.js";
 
 function App() {
   const dispatch = useDispatch();
@@ -17,6 +19,7 @@ function App() {
     const fetchToken = async () => {
       const token = await getTokenFromAPI();
       setToken(token);
+      dispatch(addToken(token));
     };
 
     fetchToken();
@@ -41,6 +44,10 @@ function App() {
     {
       path: '/investors/:id',
       element: <InvestorDetail />,
+    },
+      {
+      path: '/investors/:id/asset/:asset',
+      element: <InvestorAssetDetail />,
     },
   ]);
 

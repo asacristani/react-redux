@@ -58,6 +58,9 @@ export const getAssetFromAPI = async (token, asset_class, investorId) => {
           accept: 'application/json',
           Authorization: `Bearer ${token}`,
         },
+        params: {
+          Size: 10
+        }
       },
     );
 
