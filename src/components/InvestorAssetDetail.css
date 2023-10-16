@@ -1,0 +1,29 @@
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.heading {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.list-item {
+  background-color: #f5f5f5; /* Color de fondo para diferenciar cada registro */
+  border: 1px solid #ddd; /* Borde para separar visualmente los registros */
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.list-item p {
+  margin: 0;
+}
+
+.list-item p:first-child {
+  font-weight: bold;
+}

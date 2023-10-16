@@ -9,7 +9,7 @@ import { InvestorAssetDetail } from './components/investorAssetDetail.jsx';
 import { getInvestorsFromAPI, getTokenFromAPI } from './sdks/preqin.js';
 
 import { addInvestors } from './redux/investorsSlice.js';
-import {addToken} from "./redux/tokenSlice.js";
+import { addToken } from './redux/tokenSlice.js';
 
 function App() {
   const dispatch = useDispatch();
@@ -45,7 +45,7 @@ function App() {
       path: '/investors/:id',
       element: <InvestorDetail />,
     },
-      {
+    {
       path: '/investors/:id/asset/:asset',
       element: <InvestorAssetDetail />,
     },

@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import { AssetClassEnum } from '../sdks/preqin.js';
+import './InvestorDetail.css';
 
 function InvestorDetail() {
   let { id } = useParams();
@@ -11,26 +12,28 @@ function InvestorDetail() {
   );
 
   return (
-    <div>
-      <h1>Investor Detail</h1>
+    <div className="container">
+      <h1 className="heading">Investor Detail</h1>
       {investorTarget ? (
         <>
-          <ul>
+          <ul className="list">
             {Object.keys(investorTarget).map((key, index) => (
-              <li key={index}>
+              <li className="list-item" key={index}>
                 <strong>{key}:</strong> {investorTarget[key]}
               </li>
             ))}
           </ul>
-          <h2>Asset Classes</h2>
-          <ul>
+          <h2 className="heading">Asset Classes</h2>
+          <ul className="list">
             {Object.entries(AssetClassEnum).map(([key, value]) => (
-              <li key={key}>
-                <strong>{key}:</strong>  <Link
-                    key={value}
-                    to={`/investors/${investorTarget.firmID}/asset/${key}`}
-                  >{value}
-              </Link>
+              <li className="list-item" key={key}>
+                <strong>{key}:</strong>{' '}
+                <Link
+                  key={value}
+                  to={`/investors/${investorTarget.firmID}/asset/${key}`}
+                >
+                  {value}
+                </Link>
               </li>
             ))}
           </ul>

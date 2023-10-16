@@ -1,7 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import {useEffect, useState} from 'react';
-import {AssetClassEnum, getAssetFromAPI, getInvestorsFromAPI} from '../sdks/preqin.js';
+import { useEffect, useState } from 'react';
+import {
+  AssetClassEnum,
+  getAssetFromAPI,
+  getInvestorsFromAPI,
+} from '../sdks/preqin.js';
+import './InvestorAssetDetail.css';
 
 function InvestorAssetDetail() {
   let { id, asset } = useParams();
@@ -12,8 +17,8 @@ function InvestorAssetDetail() {
     if (token) {
       const fetchInvestorAsset = async () => {
         const investorAsset = await getAssetFromAPI(token, asset, id);
-        console.log(investorAsset.data)
-        setAssetInfo(investorAsset.data)
+        console.log(investorAsset.data);
+        setAssetInfo(investorAsset.data);
       };
 
       fetchInvestorAsset();
@@ -21,11 +26,13 @@ function InvestorAssetDetail() {
   }, [token]);
 
   return (
-    <div>
-      <h1>Asset {asset} for {id}</h1>
-      <ul>
+    <div className="container">
+      <h1 className="heading">
+        Asset {asset} for {id}
+      </h1>
+      <ul className="list">
         {assetInfo.map((record, index) => (
-          <li key={index}>
+          <li className="list-item" key={index}>
             {Object.entries(record).map(([key, value]) => (
               <p key={key}>
                 <strong>{key}:</strong> {value}
